@@ -1,11 +1,13 @@
 # Model attributes
 import json
 import os
+
 from pkg_resources import resource_filename
 
-MODEL_NAME="persistence"
-SELECTED_SUBMODEL_PARAMS_FILE=resource_filename("subseasonal_toolkit",
-    os.path.join("models",MODEL_NAME,"selected_submodel.json"))
+MODEL_NAME = "persistence"
+SELECTED_SUBMODEL_PARAMS_FILE = resource_filename("subseasonal_toolkit",
+                                                  os.path.join("models", MODEL_NAME, "selected_submodel.json"))
+
 
 def get_selected_submodel_name(gt_id, target_horizon):
     """Returns the name of the selected submodel for this model and given task
@@ -19,6 +21,7 @@ def get_selected_submodel_name(gt_id, target_horizon):
         json_args = json.load(params_file)[f'{gt_id}_{target_horizon}']
     # Return submodel name associated with these parameters
     return get_submodel_name(**json_args)
+
 
 def get_submodel_name():
     """Returns submodel name for a given setting of model parameters

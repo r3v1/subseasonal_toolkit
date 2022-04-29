@@ -10,7 +10,10 @@
 # Named args:
 #   --target_dates (-t): target dates for batch prediction
 import os
+
 from pkg_resources import resource_filename
+
 from subseasonal_toolkit.utils.notebook_util import call_notebook
+
 model_name = "persistence"
-call_notebook(resource_filename("subseasonal_toolkit",os.path.join("models",model_name,model_name+".ipynb")))
+call_notebook(resource_filename("subseasonal_toolkit", os.path.join("models", model_name, model_name + ".ipynb")))
