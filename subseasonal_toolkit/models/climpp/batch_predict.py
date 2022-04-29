@@ -17,9 +17,11 @@
 #     the target combination to include; set to 0 to include only target 
 #     month-day combo; set to 182 to include entire year; (default: 0)
 import os
-from subseasonal_toolkit.utils.notebook_util import call_notebook
+
 from pkg_resources import resource_filename
+
+from subseasonal_toolkit.utils.notebook_util import call_notebook
 
 model_name = "climpp"
 call_notebook(
-    resource_filename("subseasonal_toolkit",os.path.join("models",model_name,model_name+".ipynb")))
+    resource_filename("subseasonal_toolkit", os.path.join("models", model_name, model_name + ".ipynb")))

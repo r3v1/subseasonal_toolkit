@@ -14,16 +14,16 @@
 #     (default: "python"); e.g., "python" to run locally,
 #     "src/batch/batch_python.sh --memory 12 --cores 16 --hours 1" to
 #     submit to batch queue
-import os
 import subprocess
 from argparse import ArgumentParser
+
 from subseasonal_toolkit.utils.general_util import printf
 
 model_name = "climpp"
 
 # Parse command-line arguments
 parser = ArgumentParser()
-parser.add_argument("pos_vars",nargs="*")  # gt_id and target_horizon
+parser.add_argument("pos_vars", nargs="*")  # gt_id and target_horizon
 parser.add_argument('--target_dates', '-t', default="std_test")
 parser.add_argument('--cmd_prefix', '-c', default="python")
 
@@ -36,7 +36,7 @@ cmd_prefix = args.cmd_prefix
 # Specify list of parameter settings to run
 if "tmp2m" in gt_id:
     param_strs = [
-        "-l rmse -y all -m 10", 
+        "-l rmse -y all -m 10",
         "-l rmse -y all -m 7",
         "-l rmse -y all -m 1",
         "-l rmse -y all -m 0",
