@@ -1,11 +1,13 @@
 # Model attributes
 import json
 import os
+
 from pkg_resources import resource_filename
 
-MODEL_NAME="deb_ecmwf"
-SELECTED_SUBMODEL_PARAMS_FILE=resource_filename("subseasonal_toolkit",
-    os.path.join("models",MODEL_NAME,"selected_submodel.json"))
+MODEL_NAME = "deb_ecmwf"
+SELECTED_SUBMODEL_PARAMS_FILE = resource_filename("subseasonal_toolkit",
+                                                  os.path.join("models", MODEL_NAME, "selected_submodel.json"))
+
 
 def get_selected_submodel_name(gt_id, target_horizon):
     """Returns the name of the selected submodel for this model and given task
@@ -20,11 +22,11 @@ def get_selected_submodel_name(gt_id, target_horizon):
     # Return submodel name associated with these parameters
     return get_submodel_name(**json_args)
 
-def get_submodel_name(train_years=20, margin_in_days=None, loss="mse", 
-                      first_lead=0, last_lead = 29, forecast_with="c", debias_with="p"):
+
+def get_submodel_name(train_years=20, margin_in_days=None, loss="mse",
+                      first_lead=0, last_lead=29, forecast_with="c", debias_with="p"):
     """
     Returns submodel name for a given setting of model parameters
     """
     submodel_name = f"{MODEL_NAME}-years{train_years}_leads{first_lead}-{last_lead}_loss{loss}_forecast{forecast_with}_debias{debias_with}"
     return submodel_name
-

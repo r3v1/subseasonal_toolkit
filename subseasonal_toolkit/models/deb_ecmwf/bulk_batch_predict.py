@@ -14,16 +14,16 @@
 #     (default: "python"); e.g., "python" to run locally,
 #     "src/batch/batch_python.sh --memory 12 --cores 16 --hours 1" to
 #     submit to batch queue
-import os
 import subprocess
 from argparse import ArgumentParser
+
 from subseasonal_toolkit.utils.general_util import printf
 
 model_name = "deb_ecmwf"
 
 # Parse command-line arguments
 parser = ArgumentParser()
-parser.add_argument("pos_vars",nargs="*")  # gt_id and target_horizon
+parser.add_argument("pos_vars", nargs="*")  # gt_id and target_horizon
 parser.add_argument('--target_dates', '-t', default="std_test")
 parser.add_argument('--cmd_prefix', '-c', default="python")
 
@@ -46,7 +46,7 @@ else:
     raise ValueError(f"invalid horizon {horizon}")
 forecast_with = ["c", "p", "p+c"]
 debias_with = ["p+c"]
-    
+
 module_str = f"-m subseasonal_toolkit.models.{model_name}.batch_predict"
 task_str = f"{gt_id} {horizon} -t {target_dates}"
 # Iterate over parallel leads arrays
@@ -57,7 +57,7 @@ for ii in range(len(first_leads)):
     for fw in forecast_with:
         for dw in debias_with:
             # Run batch predict for this configuration
-            param_str=f"-y {train_years} -fl {first_lead} -ll {last_lead} -fw {fw} -dw {dw}"
-            cmd=f"{cmd_prefix} {module_str} {task_str} {param_str}"
+            param_str = f"-y {train_years} -fl {first_lead} -ll {last_lead} -fw {fw} -dw {dw}"
+            cmd = f"{cmd_prefix} {module_str} {task_str} {param_str}"
             printf(f"Running {cmd}")
             subprocess.call(cmd, shell=True)

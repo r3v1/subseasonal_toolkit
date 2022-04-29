@@ -24,8 +24,10 @@
 #   --first_lead (-fl): first ecmwf lead to average into forecast (0-29) (default: 0)
 #   --last_lead (-ll): last ecmwf lead to average into forecast (0-29) (default: 29)
 import os
-from subseasonal_toolkit.utils.notebook_util import call_notebook
+
 from pkg_resources import resource_filename
 
+from subseasonal_toolkit.utils.notebook_util import call_notebook
+
 model_name = "deb_ecmwf"
-call_notebook(resource_filename("subseasonal_toolkit",os.path.join("models",model_name,model_name+".ipynb")))
+call_notebook(resource_filename("subseasonal_toolkit", os.path.join("models", model_name, model_name + ".ipynb")))
