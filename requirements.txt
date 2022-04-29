@@ -1,0 +1,17 @@
+numpy
+pandas
+scikit-learn
+jupyter
+filelock
+catboost
+pyarrow
+ttictoc
+subseasonal-data
+poold
+torch
+nbeats-pytorch
+pytorch-lightning
+tables
+xarray
+dask
+cartopy
